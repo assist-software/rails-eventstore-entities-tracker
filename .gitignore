@@ -29,3 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.idea
+/config/local_env.yml
+/config/enviroments/production.rb
+/config/secrets.rb
