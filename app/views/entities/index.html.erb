@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Entities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>State</th>
+      <th>Extra data</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+        <td><%= entity.uid %></td>
+        <td><%= entity.name %></td>
+        <td><%= entity.description %></td>
+        <td><%= entity.state %></td>
+        <td><%= entity.extra_data %></td>
+        <td><%= link_to 'Show', entity %></td>
+        <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
+        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entity', new_entity_path %>
