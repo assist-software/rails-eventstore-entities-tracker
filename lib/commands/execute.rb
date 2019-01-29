@@ -8,6 +8,7 @@ module Commands
     private
     def handler_for(command)
       {
+        Commands::Entities::CreateEntity => CommandHandlers::Entities::CreateEntity.new
       }.fetch(command.class)
     end
   end
