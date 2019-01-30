@@ -16,6 +16,10 @@ module Domain
       apply Events::EntityEdited.new(data: data)
     end
 
+    def delete(uid)
+      apply Events::EntityDeleted.new(data: { uid: uid })
+    end
+
     private
 
     def apply_entity_created(event)
@@ -30,6 +34,10 @@ module Domain
       @description = event.data[:description]
       @state = event.data[:state]
       @extra_data = event.data[:extra_data]
+    end
+
+    def apply_entity_deleted(event)
+      @deleted = true
     end
   end
 end
