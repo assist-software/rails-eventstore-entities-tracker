@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Entities</h1>
+<center><h1>Entities</h1></center>
 
-<table>
-  <thead>
+<table class='table table-striped'>
+  <thead class='thead-dark'>
     <tr>
-      <th>Uid</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>State</th>
-      <th>Extra data</th>
-      <th colspan="3"></th>
+      <th scope='col'>#</th>
+      <th scope='col'>UID</th>
+      <th scope='col'>Name</th>
+      <th scope='col'>State</th>
+      <th scope='col'>Description</th>
+      <th colspan='3' scope='col'>Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @entities.each do |entity| %>
+    <% @entities.each_with_index do |entity, index| %>
       <tr>
+        <td scope='row'><%= index + 1 %></td>
         <td><%= entity.uid %></td>
         <td><%= entity.name %></td>
-        <td><%= entity.description %></td>
         <td><%= entity.state %></td>
-        <td><%= entity.extra_data %></td>
-        <td><%= link_to 'Show', entity %></td>
-        <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
-        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= entity.description %></td>
+        <td colspan="3">
+          <%= link_to 'Show', entity, class: 'btn btn-secondary' %>
+          <%= link_to 'Edit', edit_entity_path(entity), class: 'btn btn-secondary' %>
+          <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Entity', new_entity_path %>
+<%= link_to 'New Entity', new_entity_path, class: "btn btn-dark" %>

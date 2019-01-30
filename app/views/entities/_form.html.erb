@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :uid %>
-    <%= form.text_field :uid %>
+    <%= form.text_field :uid, class: "form-control", placeholder: 'UID' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control", placeholder: 'Name' %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :state %>
-    <%= form.number_field :state %>
+    <%= form.select(:state, options_for_select(Entity.states.keys), {}, {class: "custom-select mb-3" }) %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control", placeholder: 'Description' %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :extra_data %>
-    <%= form.text_area :extra_data %>
+    <%= form.text_area :extra_data, class: "form-control", placeholder: 'Extra Data' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'btn btn-dark' %>
   </div>
 <% end %>
