@@ -10,6 +10,7 @@ module Commands
       {
         Commands::Entities::CreateEntity => CommandHandlers::Entities::CreateEntity.new,
         Commands::Entities::EditEntity   => CommandHandlers::Entities::EditEntity.new,
+        Commands::Entities::DeleteEntity => CommandHandlers::Entities::DeleteEntity.new,
       }.fetch(command.class)
     end
   end
