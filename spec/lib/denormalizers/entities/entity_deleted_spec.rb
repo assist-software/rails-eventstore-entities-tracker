@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Denormalizers::Entities::EntityDeleted do
   include Commands::Execute
 
-  context "when applying entity delete denormalizer" do
+  context "when entity delete denormalizer is applied" do
     let(:event_store) { Rails.configuration.event_store }
     let!(:entity) { create(:entity) }
 

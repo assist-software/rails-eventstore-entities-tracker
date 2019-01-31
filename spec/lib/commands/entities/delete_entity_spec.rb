@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Commands::Entities::DeleteEntity do
   include Commands::Execute
 
-  context "when running entity delete command" do
+  context "when entity delete command is run" do
     let(:entity) { create(:entity) }
     let(:event_store) { Rails.configuration.event_store }
     let(:uid) { Services::UniqueIdGenerator.new.call }
@@ -21,7 +21,7 @@ describe Commands::Entities::DeleteEntity do
     context "when entity_uid is missing" do
       let(:command) { Commands::Entities::DeleteEntity.new }
 
-      it "returns an error" do
+      it "raises an error" do
         expect{ execute(command) }.to raise_error(Commands::ValidationError)
       end
     end
