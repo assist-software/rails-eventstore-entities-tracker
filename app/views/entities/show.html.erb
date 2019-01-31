@@ -1,29 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Uid:</strong>
-  <%= @entity.uid %>
-</p>
+<h1>Entity details</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @entity.name %>
-</p>
+<div class="row">
+  <div class="col-3">
+    <strong>Name:</strong>
+  </div>
+  <div class="col-9">
+    <%= @entity.name %>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @entity.description %>
-</p>
+  <div class="col-3">
+    <strong>Description:</strong>
+  </div>
 
-<p>
-  <strong>State:</strong>
-  <%= @entity.state %>
-</p>
+  <div class="col-9">
+    <%= @entity.description %>
+  </div>
 
-<p>
-  <strong>Extra data:</strong>
-  <%= @entity.extra_data %>
-</p>
+  <div class="col-3">
+    <strong>State:</strong>
+  </div>
+  <div class="col-9">
+    <%= @entity.state %>
+  </div>
 
-<%= link_to 'Edit', edit_entity_path(@entity) %> |
-<%= link_to 'Back', entities_path %>
+  <div class="col-3">
+    <strong>Extra data:</strong>
+  </div>
+  <div class="col-9">
+    <%= @entity.extra_data %>
+  </div>
+</div>
+
+<br>
+<%= link_to 'Edit', edit_entity_path(@entity), class: "btn btn-outline-secondary" %> |
+<%= link_to 'Back', entities_path, class: "btn btn-outline-secondary" %>
