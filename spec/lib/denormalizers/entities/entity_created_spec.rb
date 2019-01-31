@@ -7,7 +7,7 @@ describe Denormalizers::Entities::EntityCreated do
       uid: uid,
       name: "random_entity",
       description: "this is a random description",
-      state: 1,
+      state: "In use",
       extra_data: { d1: "something", d2: "else" }
   } }
 
