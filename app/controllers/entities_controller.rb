@@ -49,8 +49,10 @@ class EntitiesController < ApplicationController
   # DELETE /entities/1
   # DELETE /entities/1.json
   def destroy
-    cmd = Commands::Entities::DeleteEntity.new(@entity.uid)
+    cmd = Commands::Entities::DeleteEntity.new(uid: @entity.uid)
     execute(cmd)
+
+    redirect_to "/entities"
   end
 
   private
