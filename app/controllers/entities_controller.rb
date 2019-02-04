@@ -54,13 +54,14 @@ class EntitiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entity
-      @entity = Entity.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def entity_params
-      params.require(:entity).permit(:uid, :name, :description, :state, :extra_data)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_entity
+    @entity = Entity.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def entity_params
+    params.require(:entity).permit(:uid, :name, :description, :state, :extra_data)
+  end
 end
