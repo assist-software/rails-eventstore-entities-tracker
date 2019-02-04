@@ -20,7 +20,7 @@
     <tbody>
     <%= Rails.configuration.event_store.read.stream("Domain::Entity$#{@entity.uid}").backward.each do |ev| %>
       <tr>
-        <td> <%= event_type(ev) %> </td>
+        <td> <%= action_of(ev) %> </td>
         <td> <%= ev.data[:name] %> </td>
         <td> <%= ev.data[:description] %> </td>
         <td> <%= ev.data[:state] %> </td>

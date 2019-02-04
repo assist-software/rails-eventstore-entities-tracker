@@ -1,5 +1,5 @@
 module EventHelper
-  def event_type(event)
+  def action_of(event)
     case event
     when Events::EntityCreated
       "Created"
