@@ -19,11 +19,11 @@
         <td scope='row'><%= index + 1 %></td>
         <td><%= entity.name %></td>
         <td><%= entity.state %></td>
-        <td><%= entity.description %></td>
+        <td><%= truncate(entity.description, length: 80, omission: '... (continued)') %></td>
         <td colspan="3">
-          <%= link_to 'Show', entity, class: 'btn btn-secondary' %>
-          <%= link_to 'Edit', edit_entity_path(entity), class: 'btn btn-secondary' %>
-          <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark' %>
+          <%= link_to 'Show', entity, class: 'btn btn-outline-secondary' %>
+          <%= link_to 'Edit', edit_entity_path(entity), class: 'btn btn-outline-secondary' %>
+          <%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-dark' %>
         </td>
       </tr>
     <% end %>
