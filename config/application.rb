@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 require 'aggregate_root'
+require_relative "../lib/deleted_entities_tracker"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -22,6 +23,7 @@ module RailsEventstoreEntitiesTracker
     end
 
     config.event_store = RailsEventStore::Client.new
+    config.deleted_entities = DeletedEntitiesTracker.new
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
