@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<center>
+  <h1>
+    <%= @deleted_entity.last.data[:uid] %> history
+  </h1>
+</center>
+
+<table class="table table-striped">
+  <thead class='thead-dark'>
+  <tr>
+    <th>Action</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>State</th>
+    <th>Extra Data</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= @deleted_entity.backward.each do |ev| %>
+    <tr>
+      <td> <%= action_of(ev) %> </td>
+      <td> <%= ev.data[:name] %> </td>
+      <td> <%= ev.data[:description] %> </td>
+      <td> <%= ev.data[:state] %> </td>
+      <td> <%= ev.data[:extra_data] %> </td>
+      <td> <%= ev.metadata[:timestamp] %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
