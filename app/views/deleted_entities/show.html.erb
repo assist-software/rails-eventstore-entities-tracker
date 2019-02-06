@@ -31,3 +31,5 @@
   <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Restore', "/entities/#{@deleted_entity.last.data[:uid]}/restore", method: :post, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary" %>
