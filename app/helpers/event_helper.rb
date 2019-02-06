@@ -7,6 +7,8 @@ module EventHelper
       "Edited"
     when Events::EntityDeleted
       "Deleted"
+    when Events::EntityRestored
+      "Restored"
     else
       "Unknown action"
     end
