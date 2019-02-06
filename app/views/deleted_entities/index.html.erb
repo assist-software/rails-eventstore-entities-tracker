@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <center><h1>Deleted Entities History</h1></center>
 
 <table class='table table-striped'>
   <thead class='thead-dark'>
-  <tr>
-    <th scope='col'>#</th>
-    <th scope='col'>Name</th>
-    <th scope='col'>Actions</th>
-    <th scope='col'>Date</th>
-  </tr>
+    <tr>
+     <th scope='col'>#</th>
+      <th scope='col'>Name</th>
+     <th scope='col'>Actions</th>
+     <th scope='col'>Date</th>
+    </tr>
   </thead>
 
   <tbody>
@@ -17,16 +15,18 @@
     <tr>
       <td scope='row'><%= index + 1 %></td>
       <td>
-        <%= Domain::Entity.new(entity.data[:uid]).load("Domain::Entity$#{entity.data[:uid]}").name %>
+        <%= load_entity_aggregate(entity.data[:uid]).name %>
       </td>
       <td>
-        <% if Domain::Entity.new(entity.data[:uid]).load("Domain::Entity$#{entity.data[:uid]}").restored %>
+        <% if load_entity_aggregate(entity.data[:uid]).restored %>
           Restored
         <% else %>
           <%= link_to 'Show', deleted_entity_path(entity.data[:uid]), class: "btn btn-outline-secondary" %></td>
         <% end %>
-        <td><%= Rails.configuration.event_store.read.stream("Domain::Entity$#{entity.data[:uid]}").last.metadata[:timestamp] %></td>
-        </tr>
+      <td>
+        <%= read_stream("Domain::Entity$#{entity.data[:uid]}").last.metadata[:timestamp] %>
+      </td>
+    </tr>
   <% end %>
   </tbody>
 </table>
