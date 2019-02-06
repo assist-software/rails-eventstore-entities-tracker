@@ -2,7 +2,7 @@ module Domain
   class Entity
     include AggregateRoot
 
-    attr_reader :uid, :name, :description, :state, :extra_data
+    attr_reader :uid, :name, :description, :state, :extra_data, :restored
 
     def initialize(uid)
       @uid = uid
@@ -18,6 +18,10 @@ module Domain
 
     def delete(uid)
       apply Events::EntityDeleted.new(data: { uid: uid })
+    end
+
+    def restore(uid)
+      apply Events::EntityRestored.new(data: { uid: uid })
     end
 
     private
@@ -38,6 +42,12 @@ module Domain
 
     def apply_entity_deleted(event)
       @deleted = true
+      @restored = nil
+    end
+
+    def apply_entity_restored(event)
+      @deleted = nil
+      @restored = true
     end
   end
 end
