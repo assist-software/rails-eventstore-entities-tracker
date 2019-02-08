@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-  <%= @deleted_entity.backward.each do |ev| %>
+  <%= @deleted_entity.each do |ev| %>
     <tr>
       <td> <%= action_of(ev) %> </td>
       <td> <%= ev.data[:name] %> </td>
