@@ -2,16 +2,20 @@ class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
   include Commands::Execute
+  include DeletedEntitiesHelper
 
   # GET /entities
   # GET /entities.json
   def index
-    @entities = Entity.all
+    @entities = Entity.all.page(params[:page])
   end
 
   # GET /entities/1
   # GET /entities/1.json
   def show
+    start = params[:last_event_id] || :head
+    actions = read_stream("Domain::Entity$#{@entity.uid}", start: start, count: 2)
+    @paginatable_array = Kaminari.paginate_array(actions, total_count: 10).page(params[:page])
   end
 
   # GET /entities/new

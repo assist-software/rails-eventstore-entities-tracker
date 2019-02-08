@@ -1,5 +1,7 @@
 <center><h1>Entities</h1></center>
 
+<%= page_entries_info @entities %>
+
 <table class='table table-striped'>
   <thead class='thead-dark'>
     <tr>
@@ -27,5 +29,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @entities, class: 'page-item' %>
 
 <%= link_to 'New Entity', new_entity_path, class: "btn btn-dark" %>
