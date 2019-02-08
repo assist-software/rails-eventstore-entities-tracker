@@ -1,7 +1,6 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
-
   include Commands::Execute
 
   # GET /entities
@@ -31,8 +30,9 @@ class EntitiesController < ApplicationController
     entity_data[:uid] = Services::UniqueIdGenerator.new.call
     cmd = Commands::Entities::CreateEntity.new(entity_data)
     execute(cmd)
-
-    redirect_to "/entities"
+    redirect_to entities_url, success: 'Entity was successfully created.'
+  rescue => error
+    redirect_to new_entity_url, warning: error_messages(error)
   end
 
   # PATCH/PUT /entities/1
@@ -42,8 +42,9 @@ class EntitiesController < ApplicationController
     entity_data[:uid] = @entity.uid
     cmd = Commands::Entities::EditEntity.new(entity_data)
     execute(cmd)
-
-    redirect_to "/entities"
+    redirect_to entities_url, success: 'Entity was successfully updated.'
+  rescue => error
+    redirect_to edit_entity_url, warning: error_messages(error)
   end
 
   # DELETE /entities/1
@@ -51,8 +52,9 @@ class EntitiesController < ApplicationController
   def destroy
     cmd = Commands::Entities::DeleteEntity.new(uid: @entity.uid)
     execute(cmd)
-
-    redirect_to "/entities"
+    redirect_to entities_url, success: 'Entity was successfully deleted.'
+  rescue => error
+    redirect_to entities_url, warning: error_messages(error)
   end
 
   private
@@ -64,6 +66,10 @@ class EntitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def entity_params
-    params.require(:entity).permit(:uid, :name, :description, :state, :extra_data)
+    params.require(:entity).permit(:name, :description, :state, :extra_data)
+  end
+
+  def error_messages(error)
+    error&.message&.full_messages&.join("\n")
   end
 end
