@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 gem 'rails', '~> 5.2.2'
 gem 'rails_event_store'
+gem 'kaminari'
 
 gem 'mysql2'
 

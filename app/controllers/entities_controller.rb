@@ -2,16 +2,18 @@ class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
   include Commands::Execute
+  include DeletedEntitiesHelper
 
   # GET /entities
   # GET /entities.json
   def index
-    @entities = Entity.all
+    @entities = Entity.all.page(params[:page])
   end
 
   # GET /entities/1
   # GET /entities/1.json
   def show
+    @events = read_stream("Domain::Entity$#{@entity.uid}")
   end
 
   # GET /entities/new

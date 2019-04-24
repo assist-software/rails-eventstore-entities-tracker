@@ -1,5 +1,7 @@
 <center><h1>Entities</h1></center>
 
+<%= page_entries_info @entities %>
+
 <table class='table table-striped'>
   <thead class='thead-dark'>
     <tr>
@@ -17,7 +19,7 @@
         <td scope='row'><%= index + 1 %></td>
         <td><%= entity.name %></td>
         <td><%= entity.state %></td>
-        <td><%= truncate(entity.description, length: 80, omission: '... (continued)') %></td>
+        <td><%= truncate(entity.description, length: 75, omission: '... (continued)') %></td>
         <td colspan="3">
           <%= link_to 'Show', entity, class: 'btn btn-outline-secondary' %>
           <%= link_to 'Edit', edit_entity_path(entity), class: 'btn btn-outline-secondary' %>
@@ -27,5 +29,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @entities, class: 'page-item' %>
 
 <%= link_to 'New Entity', new_entity_path, class: "btn btn-dark" %>

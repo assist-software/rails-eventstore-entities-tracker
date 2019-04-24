@@ -5,7 +5,7 @@ class DeletedEntitiesController < ApplicationController
   include DeletedEntitiesHelper
 
   def index
-    @deleted_entities = read_stream("DeletedEntities").backward.to_a.uniq { |en| en.data[:uid]}
+    @deleted_entities = read_stream("DeletedEntities").uniq { |en| en.data[:uid]}
   end
 
   def show

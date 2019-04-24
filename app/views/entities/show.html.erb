@@ -4,33 +4,30 @@
   </h1>
 </center>
 
-<div>
-  <table class="table table-striped">
-    <thead class="thead-dark">
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Action</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>State</th>
+    <th>Extra Data</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @events.each do |ev| %>
     <tr>
-      <th>Action</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>State</th>
-      <th>Extra Data</th>
-      <th>Date</th>
+      <td> <%= action_of(ev) %> </td>
+      <td> <%= ev.data[:name] %> </td>
+      <td> <%= ev.data[:description] %> </td>
+      <td> <%= ev.data[:state] %> </td>
+      <td> <%= ev.data[:extra_data] %> </td>
+      <td> <%= ev.metadata[:timestamp] %> </td>
     </tr>
-    </thead>
+  <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-    <%= Rails.configuration.event_store.read.stream("Domain::Entity$#{@entity.uid}").backward.each do |ev| %>
-      <tr>
-        <td> <%= action_of(ev) %> </td>
-        <td> <%= ev.data[:name] %> </td>
-        <td> <%= ev.data[:description] %> </td>
-        <td> <%= ev.data[:state] %> </td>
-        <td> <%= ev.data[:extra_data] %> </td>
-        <td> <%= ev.metadata[:timestamp] %> </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
-
-<br>
 <%= link_to 'Back', entities_path, class: "btn btn-outline-secondary" %>
