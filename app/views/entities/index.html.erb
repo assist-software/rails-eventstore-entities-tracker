@@ -19,7 +19,7 @@
         <td scope='row'><%= index + 1 %></td>
         <td><%= entity.name %></td>
         <td><%= entity.state %></td>
-        <td><%= truncate(entity.description, length: 80, omission: '... (continued)') %></td>
+        <td><%= truncate(entity.description, length: 75, omission: '... (continued)') %></td>
         <td colspan="3">
           <%= link_to 'Show', entity, class: 'btn btn-outline-secondary' %>
           <%= link_to 'Edit', edit_entity_path(entity), class: 'btn btn-outline-secondary' %>
