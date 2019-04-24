@@ -13,9 +13,7 @@ class EntitiesController < ApplicationController
   # GET /entities/1
   # GET /entities/1.json
   def show
-    start = params[:last_event_id] || :head
-    actions = read_stream("Domain::Entity$#{@entity.uid}", start: start, count: 2)
-    @paginatable_array = Kaminari.paginate_array(actions, total_count: 10).page(params[:page])
+    @events = read_stream("Domain::Entity$#{@entity.uid}")
   end
 
   # GET /entities/new

@@ -5,7 +5,7 @@
 </center>
 
 <table class="table table-striped">
-  <thead class='thead-dark'>
+  <thead class="thead-dark">
   <tr>
     <th>Action</th>
     <th>Name</th>
@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-  <%= @deleted_entity.each do |ev| %>
+  <% @deleted_entity.each do |ev| %>
     <tr>
       <td> <%= action_of(ev) %> </td>
       <td> <%= ev.data[:name] %> </td>

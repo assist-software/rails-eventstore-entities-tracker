@@ -1,12 +1,11 @@
 module DeletedEntitiesHelper
-  def read_stream(stream_name, start: :head, count: 100)
-    # byebug
-    Rails.configuration.event_store
+  def read_stream(stream_name)
+    Rails
+      .configuration
+      .event_store
       .read
       .backward
       .stream(stream_name)
-      .from(start)
-      .limit(count)
       .to_a
   end
 

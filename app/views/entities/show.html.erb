@@ -4,7 +4,6 @@
   </h1>
 </center>
 
-
 <table class="table table-striped">
   <thead class="thead-dark">
   <tr>
@@ -18,7 +17,7 @@
   </thead>
 
   <tbody>
-  <% @paginatable_array.each do |ev| %>
+  <% @events.each do |ev| %>
     <tr>
       <td> <%= action_of(ev) %> </td>
       <td> <%= ev.data[:name] %> </td>
@@ -31,7 +30,4 @@
   </tbody>
 </table>
 
-<%= paginate @paginatable_array, class: 'page-item', params: { last_event_id: @paginatable_array&.last&.event_id } %>
-
-<br>
 <%= link_to 'Back', entities_path, class: "btn btn-outline-secondary" %>
