@@ -1,24 +1,61 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Project
 
-Things you may want to cover:
+Rails Event Store Entities Tracker
 
-* Ruby version
+## Install
 
-* System dependencies
+### Clone the repository
 
-* Configuration
+```shell
+git@github.com:assist-software/rails-eventstore-entities-tracker.git
+cd path_to_project
+```
 
-* Database creation
+### Check your Ruby version
 
-* Database initialization
+```shell
+ruby -v
+```
 
-* How to run the test suite
+The ouput should start with something like `ruby 2.5.1`
 
-* Services (job queues, cache servers, search engines, etc.)
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-* Deployment instructions
+```shell
+rbenv install 2.5.1
+```
 
-* ...
+### Install dependencies
+
+Using [Bundler](https://github.com/bundler/bundler)
+
+```shell
+bundle
+```
+
+### Configure the database
+
+Create a `local_env.yml` file under `config` folder and add:
+
+```shell
+USERNAME: YOUR_USERNAME
+PASSWORD: YOUR_PASSWORD
+DATABASE: YOUR_DEV_DATABASE
+
+TEST_DATABASE: YOUR_TEST_DATABASE
+PROD_DATABASE: YOUR_PROD_DATABASE
+```
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate
+```
+
+## Server
+
+```shell
+rails s
+```
