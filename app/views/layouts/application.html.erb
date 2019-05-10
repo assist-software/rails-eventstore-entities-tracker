@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
     <title>RailsEventstoreEntitiesTracker</title>
     <%= csrf_meta_tags %>
@@ -9,14 +9,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render partial: 'partials/navbar' %>
+  <body class="d-flex flex-column h-100">
 
-    <div class="container">
-      <%= render partial: 'partials/alerts' %>
-      <%= yield %>
-    </div>
+    <header>
+      <%= render partial: 'partials/navbar' %>
+    </header>
 
-    <%= render partial: 'partials/footer' %>
+    <main class="flex-shrink-0">
+      <div class="container">
+        <%= render partial: 'partials/alerts' %>
+        <%= yield %>
+      </div>
+    </main>
+
+
+    <footer class="footer mt-auto">
+      <%= render partial: 'partials/footer' %>
+    </footer>
   </body>
 </html>
