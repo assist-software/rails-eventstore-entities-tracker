@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 gem 'rails', '~> 5.2.4'
-gem 'rails_event_store'
+gem 'rails_event_store', '0.37.0'
 gem 'kaminari'
 
 gem 'mysql2'
